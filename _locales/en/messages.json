@@ -1,0 +1,58 @@
+{
+  "extensionName": {
+    "message": "behind!",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "Finds and opens all images under your cursor.",
+    "description": "Description of the extension."
+  },
+  "resultsPageTitle": {
+    "message": "behind!",
+    "description": "Title of the results page at inline.html."
+  },
+  "optionsPageTitle": {
+    "message": "behind! Options",
+    "description": "Title of the options page at options.html."
+  },
+  "menuButtonTextDefault": {
+    "message": "behind!",
+    "description": "Default context menu button text."
+  },
+  "menuButtonTextWithNum": {
+    "message": "behind! ($N$)",
+    "description": "Context menu button text when there are N images found.",
+    "placeholders": {"N" : { "content" : "$1"}}
+  },
+  "menuButtonTextFrameDisabled": {
+    "message": "behind! 'iframe' etiketleri içinde çalışmaz.",
+    "description": "Context menu button text when there are iframes."
+  },
+  "imgSizeText": {
+    "message": "Original image size: $W$px to $H$px",
+    "description": "Text indicating the original image size in pixels.",
+    "placeholders": {"W" : { "content" : "$1"}, "H" : { "content" : "$2"}}
+  },
+  "errorNoImages": {
+    "message": "No images were found.",
+    "description": "Error message for when no images could be extracted."
+  },
+  "errorTabsSendMessage": {
+    "message": "Error while sending message to tab: $ERR_MSG$",
+    "description": "Error message for errors in tabs.sendMessage().",
+    "placeholders": {"ERR_MSG" : { "content" : "$1"}}
+  },
+  "errorTabsGetCurrent": {
+    "message": "Error while retrieving current tab info: $ERR_MSG$",
+    "description": "Error message for errors in tabs.getCurrent().",
+    "placeholders": {"ERR_MSG" : { "content" : "$1"}}
+  },
+  "bgCheckbox": {
+    "message": "Bring inline images screen forward",
+    "description": "Bring inline images screen forward option text"
+  },
+  "bgCheckboxHint": {
+    "message": "If checked, tabs opened by behind! will be active (they will be brought forward)",
+    "description": "Bring inline images screen forward option help text"
+  }
+}

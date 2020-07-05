@@ -1,0 +1,12 @@
+{"manifest_version": 2, "default_locale": "en", 
+ "name": "__MSG_extensionName__", "version": "0.2.2",
+ "description": "__MSG_extensionDescription__",
+ "permissions": ["<all_urls>", "tabs", "contextMenus", "storage"],
+ "content_scripts": [{"matches": ["<all_urls>"],
+   "js": ["browser-polyfill.js", "content.js"]}],
+ "background": {"scripts": ["browser-polyfill.js", "bg.js"]},
+ "options_ui": {"page": "options.html", "browser_style": true},
+ "icons": {
+     "16": "icon.svg",  "32": "icon.svg",   "48": "icon.svg",
+     "64": "icon.svg",  "96": "icon.svg",  "128": "icon.svg",
+    "256": "icon.svg", "512": "icon.svg", "1024": "icon.svg"}}

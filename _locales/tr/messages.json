@@ -1,0 +1,58 @@
+{
+  "extensionName": {
+    "message": "behind!",
+    "description": "Name of the extension."
+  },
+  "extensionDescription": {
+    "message": "İmlecin altındaki tüm görselleri bulup açar.",
+    "description": "Description of the extension."
+  },
+  "resultsPageTitle": {
+    "message": "behind!",
+    "description": "Title of the results page at inline.html."
+  },
+  "optionsPageTitle": {
+    "message": "behind! Ayarları",
+    "description": "Title of the options page at options.html."
+  },
+  "menuButtonTextDefault": {
+    "message": "behind!",
+    "description": "Default context menu button text."
+  },
+  "menuButtonTextWithNum": {
+    "message": "behind! ($N$)",
+    "description": "Context menu button text when there are N images found.",
+    "placeholders": {"N" : { "content" : "$1"}}
+  },
+  "menuButtonTextFrameDisabled": {
+    "message": "behind! can't work in iframes",
+    "description": "Context menu button text when there are iframes."
+  },
+  "imgSizeText": {
+    "message": "Orijinal görsel boyutu: $W$px x $H$px",
+    "description": "Text indicating the original image size in pixels.",
+    "placeholders": {"W" : { "content" : "$1"}, "H" : { "content" : "$2"}}
+  },
+  "errorNoImages": {
+    "message": "Görsel bulunamadı.",
+    "description": "Error message for when no images could be extracted."
+  },
+  "errorTabsSendMessage": {
+    "message": "Sekmeye komut gönderilirken hata oluştu: $ERR_MSG$",
+    "description": "Error message for errors in tabs.sendMessage().",
+    "placeholders": {"ERR_MSG" : { "content" : "$1"}}
+  },
+  "errorTabsGetCurrent": {
+    "message": "Mevcut sekme bilgisi okunurken hata oluştu: $ERR_MSG$",
+    "description": "Error message for errors in tabs.getCurrent().",
+    "placeholders": {"ERR_MSG" : { "content" : "$1"}}
+  },
+  "bgCheckbox": {
+    "message": "Açılan pencereyi öne getir",
+    "description": "Açılan pencereyi öne getir seçeneği metni"
+  },
+  "bgCheckboxHint": {
+    "message": "Bu seçenek seçili olduğunda, behind! açtığı sekmeleri öne getirir (etkinleştirir)",
+    "description": "Açılan pencereyi öne getir seçeneği yardım metni"
+  }
+}

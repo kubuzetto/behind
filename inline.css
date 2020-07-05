@@ -1,0 +1,35 @@
+* { margin: 0; padding: 0 }
+
+body {
+	background: rgb(234, 234, 234);
+	text-align: center;
+	margin: 50px;
+}
+
+#icon {
+	display: inline-block;
+	background-image: url(/icon.svg);
+	background-size: 128px 128px;
+	width: 128px; height: 128px;
+	padding: 0;
+	border-bottom: 5px dotted #ddd;
+	margin-bottom: 30px;
+}
+
+#main>img {
+	display: inline;
+	background: transparent;
+	border: 10px dashed #94EAFF;
+	margin: 10px;
+	padding: 10px;
+	min-width: 10px;
+	min-height: 10px;
+	max-width: 600px;
+	max-height: 400px;
+	border-radius: 10px;
+	vertical-align: top;
+}
+
+#main>img:nth-child(even) {
+	border-color: #ffa1c3;
+}
