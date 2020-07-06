@@ -6,6 +6,29 @@ body {
 	margin: 50px;
 }
 
+#main>.imCt {
+	text-align: center;
+	display: inline-block;
+	background: transparent;
+	max-width: 600px;
+	max-height: 400px;
+	border-radius: 10px;
+	vertical-align: top;
+	border: 10px dashed #94EAFF;
+}
+
+#main>.imCt:nth-child(even) {
+	border-color: #ffa1c3;
+}
+
+#main>.imCt>span {
+	display: block;
+	text-align: center;
+	font-size: 8pt;
+	font-family: monospace;
+	padding: 5px;
+}
+
 #icon {
 	display: inline-block;
 	background-image: url(/icon.svg);
@@ -16,20 +39,10 @@ body {
 	margin-bottom: 30px;
 }
 
-#main>img {
-	display: inline;
+#main>.imCt>img {
+	display: inline-block;
 	background: transparent;
-	border: 10px dashed #94EAFF;
-	margin: 10px;
-	padding: 10px;
 	min-width: 10px;
 	min-height: 10px;
-	max-width: 600px;
-	max-height: 400px;
-	border-radius: 10px;
-	vertical-align: top;
-}
-
-#main>img:nth-child(even) {
-	border-color: #ffa1c3;
+	margin: 10px;
 }
