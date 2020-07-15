@@ -24,6 +24,7 @@ var makeLiElem = function (ul, ht) {
 };
 
 window.onload = function () {
+	browser.storage.local.get('theme').then(function(r) {document.body.id=r.theme});
 	browser.tabs.getCurrent ().then (function (self) {
 		// missing opener tab id; close
 		var oti = self.openerTabId;

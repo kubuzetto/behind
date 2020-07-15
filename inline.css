@@ -1,7 +1,28 @@
+:root {
+	--L1: url('icon.svg');
+	--D1: url('icon_dark.svg');
+	--L2: rgb(234, 234, 234);
+	--D2: rgb(35, 42, 55);
+	--L3: #ccc;
+	--D3: #adf;
+	--L4: #223;
+	--D4: #fff;
+}
+
+body { --icon: var(--L1); --bg-color: var(--L2);
+--icon-bottom-color: var(--L3); --text-color: var(--L4)}
+@media (prefers-color-scheme: dark) {
+body { --icon: var(--D1); --bg-color: var(--D2);
+--icon-bottom-color: var(--D3); --text-color: var(--D4)}}
+body#lite {--icon: var(--L1); --bg-color: var(--L2);
+--icon-bottom-color: var(--L3); --text-color: var(--L4)}
+body#dark {--icon: var(--D1); --bg-color: var(--D2);
+--icon-bottom-color: var(--D3); --text-color: var(--D4)}
+
 * { margin: 0; padding: 0 }
 
 body {
-	background: rgb(234, 234, 234);
+	background: var(--bg-color);
 	text-align: center;
 	margin: 50px;
 }
@@ -14,7 +35,7 @@ body {
 	border-radius: 10px;
 	vertical-align: top;
 	padding: 10px;
-	border: 3px dashed #94EAFF;
+	border: 2px dashed #94EAFF;
 }
 
 #main>.imCt:nth-child(even) {
@@ -27,15 +48,19 @@ body {
 	font-size: 8pt;
 	font-family: monospace;
 	margin-top: 10px;
+	color: var(--text-color);
 }
 
 #icon {
 	display: inline-block;
-	background-image: url(/icon.svg);
+	background-image: var(--icon);
 	background-size: 128px 128px;
+	background-repeat: no-repeat;
+	background-position: top left;
 	width: 128px; height: 128px;
-	padding: 0;
-	border-bottom: 5px dotted #ddd;
+	padding: 0; padding-bottom: 5px;
+	border-bottom: 3px dotted black;
+	border-color: var(--icon-bottom-color);
 	margin-bottom: 30px;
 }
 

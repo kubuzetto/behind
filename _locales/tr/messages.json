@@ -54,5 +54,21 @@
   "bgCheckboxHint": {
     "message": "Bu seçenek seçili olduğunda, behind! açtığı sekmeleri öne getirir (etkinleştirir)",
     "description": "Açılan pencereyi öne getir seçeneği yardım metni"
+  },
+  "lightTheme": {
+	"message": "Açık",
+	"description": "Açık tema metni"
+  },
+  "darkTheme": {
+	"message": "Koyu",
+	"description": "Koyu tema metni"
+  },
+  "autoTheme": {
+	"message": "Otomatik",
+	"description": "Otomatik tema metni"
+  },
+  "themeHint": {
+    "message": "Tema seçimi. 'Otomatik' seçeneği sistem temasına uymaya çalışır.",
+    "description": "Tema seçimi yardım metni"
   }
 }

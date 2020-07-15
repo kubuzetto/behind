@@ -1,5 +1,5 @@
 {"manifest_version": 2, "default_locale": "en", 
- "name": "__MSG_extensionName__", "version": "0.2.5",
+ "name": "__MSG_extensionName__", "version": "0.2.6",
  "description": "__MSG_extensionDescription__",
  "permissions": ["<all_urls>", "tabs", "contextMenus", "storage"],
  "content_scripts": [{"matches": ["<all_urls>"],

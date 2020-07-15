@@ -54,5 +54,21 @@
   "bgCheckboxHint": {
     "message": "If checked, tabs opened by behind! will be active (they will be brought forward)",
     "description": "Bring inline images screen forward option help text"
+  },
+  "lightTheme": {
+	"message": "Light",
+	"description": "Light theme text"
+  },
+  "darkTheme": {
+	"message": "Dark",
+	"description": "Dark theme text"
+  },
+  "autoTheme": {
+	"message": "Automatic",
+	"description": "Auto theme text"
+  },
+  "themeHint": {
+    "message": "Theme selection. 'Automatic' option attempts to match the system theme.",
+    "description": "Theme selection option help text"
   }
 }
