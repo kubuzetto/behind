@@ -23,8 +23,30 @@ var makeLiElem = function (ul, ht) {
 	}
 };
 
+let checkTheme = function() {
+	browser.storage.local.get('theme').then(function(r) {
+		document.body.id=r.theme;
+		document.querySelector("#theme_" + (r.theme || "auto")).checked = true;
+	});
+};
+
 window.onload = function () {
-	browser.storage.local.get('theme').then(function(r) {document.body.id=r.theme});
+	checkTheme();
+	browser.storage.onChanged.addListener((x,y) => checkTheme());
+	for (let val of ["lite", "auto", "dark"]) {
+		let elem = document.querySelector("#theme_" + val);
+		if (elem) {
+			elem.addEventListener("click", function(e) {
+				browser.storage.local.set({theme: val});
+				checkTheme();
+			});
+			elem.disabled = false;
+		}
+	}
+	document.querySelector('#theme_lite_label').innerText = browser.i18n.getMessage("lightTheme");
+	document.querySelector('#theme_auto_label').innerText = browser.i18n.getMessage("autoTheme");
+	document.querySelector('#theme_dark_label').innerText = browser.i18n.getMessage("darkTheme");
+
 	browser.tabs.getCurrent ().then (function (self) {
 		// missing opener tab id; close
 		var oti = self.openerTabId;
@@ -47,5 +69,10 @@ window.onload = function () {
 		});
 	}, function (e) {
 		console.error (browser.i18n.getMessage ("errorTabsGetCurrent", e.toString()));
+	});
+
+	// remove url of this generated page from history
+	browser.permissions.contains({permissions: ["history"]}).then(allowed => {
+		if (allowed) browser.history.deleteUrl({url: window.location.href});
 	});
 };

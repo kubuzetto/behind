@@ -70,5 +70,17 @@
   "themeHint": {
     "message": "Tema seçimi. 'Otomatik' seçeneği sistem temasına uymaya çalışır.",
     "description": "Tema seçimi yardım metni"
+  },
+  "historyPermRequest": {
+    "message": "Geçmişe erişme yetkisi ver",
+    "description": "Geçmişe erişme yetkisi isteği yapar"
+  },
+  "historyPermRevoke": {
+    "message": "Geçmişe erişme yetkisini kaldır",
+    "description": "Geçmişe erişme yetkisini eklenti yetkilerinden kaldırır"
+  },
+  "historyPermHint": {
+    "message": "behind! oluşturduğu sayfaları geçmişten silmek için 'history' (geçmiş) bilgilerine erişme yetkisine gerek duyar. Bu yetki olmadan, bu tek seferlik oluşturulan bağlantılar tarayıcı geçmişinizi kirletecektir. Eğer eklentinin tarayıcı geçmişinize erişmesini istemiyorsanız, buradan geçmişe erişme yetkisini kaldırabilirsiniz. Bu durumda oluşturulan bağlantılar geçmişten silinemeyecektir.",
+    "description": "Geçmişe erişme yetkisi açıklaması"
   }
 }

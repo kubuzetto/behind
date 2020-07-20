@@ -3,7 +3,7 @@
 	--D1: url('icon_dark.svg');
 	--L2: rgb(234, 234, 234);
 	--D2: rgb(35, 42, 55);
-	--L3: #ccc;
+	--L3: #777;
 	--D3: #adf;
 	--L4: #223;
 	--D4: #fff;
@@ -26,6 +26,16 @@ body {
 	text-align: center;
 	margin: 50px;
 }
+
+#theme {position: fixed; top: 0; right: 10px; text-align: right; display: block}
+#theme>input{display:none}
+#theme>input+label{background: var(--bg-color); margin: 0; padding: 4px 2ch; cursor: pointer; min-width: 8ch;
+	display: inline-block; font-size: 8pt; font-family: monospace; color: var(--text-color); vertical-align: top;
+	border: 1px solid var(--icon-bottom-color); border-top: none; text-align: center; box-sizing: border-box;}
+#theme>input+label:first-of-type{border-bottom-left-radius: 4px}
+#theme>input+label:last-of-type{border-bottom-right-radius: 4px}
+#theme>input+label:not(:first-of-type){border-left:none}
+#theme>input:checked+label{background: var(--icon-bottom-color); color: var(--bg-color); }
 
 #main>.imCt {
 	margin: 10px;

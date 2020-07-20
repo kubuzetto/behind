@@ -70,5 +70,17 @@
   "themeHint": {
     "message": "Theme selection. 'Automatic' option attempts to match the system theme.",
     "description": "Theme selection option help text"
+  },
+  "historyPermRequest": {
+    "message": "Request history permission",
+    "description": "Requests the history permission to be added to the add-on"
+  },
+  "historyPermRevoke": {
+    "message": "Revoke history permission",
+    "description": "Revokes the history permission granted to the add-on"
+  },
+  "historyPermHint": {
+    "message": "behind! requires the history permission to remove the pages it generates from your history. Without this permission, the browser history will be polluted with auto-generated links. If you prefer this behavior to exposing your history to the add-on, you can revoke the history permission.",
+    "description": "History permission explanation"
   }
 }
