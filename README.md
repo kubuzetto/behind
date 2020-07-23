@@ -1,4 +1,7 @@
+[![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/fastlane/fastlane/blob/master/CONTRIBUTING.md)
 # behind!
+
+![](/icon256.png?raw=true )
 
 When "view background image" is greyed out, this add-on is there to help you.
 
