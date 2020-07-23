@@ -1,4 +1,4 @@
-[![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)](https://github.com/fastlane/fastlane/blob/master/CONTRIBUTING.md)
+![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg)
 # behind!
 
 ![](/icon256.png?raw=true )
