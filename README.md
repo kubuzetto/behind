@@ -1,12 +1,12 @@
-![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)
+# behind!
+
+![behind!](/icon256.png?raw=true )
 
 ![Mozilla Add-on](https://img.shields.io/amo/v/behind?style=flat-square) ![Mozilla Add-on](https://img.shields.io/amo/users/behind?style=flat-square) ![Mozilla Add-on](https://img.shields.io/amo/stars/behind?style=flat-square)
 
 ![Chrome Web Store](https://img.shields.io/chrome-web-store/v/blfpdedbdighagggfhgihcocfheicfjk?style=flat-square) ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/blfpdedbdighagggfhgihcocfheicfjk?style=flat-square) ![Chrome Web Store](https://img.shields.io/chrome-web-store/stars/blfpdedbdighagggfhgihcocfheicfjk?style=flat-square)
 
-# behind!
-
-![](/icon256.png?raw=true )
+![PRs welcome!](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge)
 
 When "view background image" is greyed out, this add-on is there to help you.
 
