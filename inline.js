@@ -7,6 +7,10 @@ var makeLiElem = function (ul, ht) {
 		let ct = document.createElement ("div");
 		ct.className = "imCt";
 		ul.appendChild (ct);
+		let a = document.createElement ("a");
+		a.target = "_blank";
+		a.setAttribute("download", "");
+		a.href = ht;
 		let im = document.createElement ("img");
 		im.onload = function () {
 			if (im.naturalWidth && im.naturalHeight) {
@@ -18,7 +22,8 @@ var makeLiElem = function (ul, ht) {
 				ct.appendChild(spn);
 			}
 		}
-		ct.appendChild (im);
+		a.appendChild (im);
+		ct.appendChild (a);
 		im.src = ht;
 	}
 };
