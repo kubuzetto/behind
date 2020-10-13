@@ -48,11 +48,10 @@ var elemsFromPoint = function (x, y, add) {
 			for (var a of [ n.content, nrm.content, bef.content,
 					aft.content, n.backgroundImage, nrm.backgroundImage,
 					bef.backgroundImage, aft.backgroundImage ]) {
-				if (a) a.replace (/url\s*\(\s*['"]?(.*?)['"]?\s*\)/g,
-					function (m, p) {
-						add (p.replace (/\\(['"])/g, "$1"), false);
-						return "";
-					});
+				if (a) {
+					let parts = /url\((['"]?)(.+)\1\)/.exec(a);
+					if (parts && parts.length > 2) add(parts[2]);
+				}
 			}
 			if (n.shadowRoot) q.push (n.shadowRoot);
 		}
