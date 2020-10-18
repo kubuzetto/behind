@@ -58,4 +58,18 @@ document.addEventListener('DOMContentLoaded', function() {
 		});
 		updHistoryPermButtonState();
 	}
+
+	let bp_cbox = document.querySelector("#bypass_cbox");
+	if (bp_cbox) {
+		document.querySelector('#bypass_cbox+span').innerText = browser.i18n.getMessage("bypassCheckbox");
+		document.querySelector('#bypass_cbox_hint').innerText = browser.i18n.getMessage("bypassCheckboxHint");
+		browser.storage.local.get('bypassOne').then(function(r) {
+			bp_cbox.checked = r.bypassOne === "t";
+		}).finally(function() {
+			bp_cbox.addEventListener("click", function(e) {
+				browser.storage.local.set({bypassOne: bp_cbox.checked ? "t" : "f"});
+			});
+			bp_cbox.disabled = false;
+		});
+	}
 });

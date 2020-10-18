@@ -30,18 +30,17 @@ var elemsFromPoint = function (x, y, add) {
 		while (n = it.nextNode ()) {
 			var nn = n.nodeName && n.nodeName.toUpperCase ();
 			if (nn == "SVG") {
-				add (svgToURL (n), true);
+				add (svgToURL (n), true, nn);
+			} else if (nn == "CANVAS") {
+				add (n.toDataURL(), true, nn);
 			} else if (nn == "IMG" || nn == "PICTURE" || nn == "SOURCE" || nn == "VIDEO") {
-				add (n.src, false); add (n.currentSrc, false); add (n.poster, false);
+				add (n.src, false, nn);
+				add (n.currentSrc, false, nn);
+				add (n.poster, false, "IMG");
 				if (n.srcset) n.srcset.replace
 					(/\s+[0-9]+(\.[0-9]+)?[wx]/g, "")
-					.split (/,/).forEach (function (x) {add (x, false);});
-			} else if (nn == "CANVAS") {
-				add (n.toDataURL(), true);
-			} /* else if (nn == "OBJECT" || nn == "IFRAME") {
-				add (n.data, false);
-				try { q.push (nn.contentDocument); } catch (e) {}
-			} */
+					.split (/,/).forEach (function (x) {add (x, false, nn);});
+			}
 			var nrm = getComputedStyle (n);
 			var bef = getComputedStyle (n, "::before");
 			var aft = getComputedStyle (n, "::after");
@@ -50,7 +49,7 @@ var elemsFromPoint = function (x, y, add) {
 					bef.backgroundImage, aft.backgroundImage ]) {
 				if (a) {
 					let parts = /url\((['"]?)(.+)\1\)/.exec(a);
-					if (parts && parts.length > 2) add(parts[2]);
+					if (parts && parts.length > 2) add(parts[2], false, nn);
 				}
 			}
 			if (n.shadowRoot) q.push (n.shadowRoot);
@@ -74,7 +73,7 @@ var onCtxMenu = function (e) {
 	browser.runtime.sendMessage
 		({nm: "setClickedElements", st: true});
 	const r = new Set ();
-	elemsFromPoint (e.clientX, e.clientY, function (v, i) {
+	elemsFromPoint (e.clientX, e.clientY, function (v, i, tag) {
 		if (v) {
 			var t = v.trim ();
 			if (t.length > 0) {
@@ -82,14 +81,14 @@ var onCtxMenu = function (e) {
 				if (!t.startsWith ("blob:")) {
 					// convert to absolute unless explicitly prevented
 					if (!i) t = new URL (t, document.baseURI).href;
-					r.add (t);
+					r.add ({e: t, t: tag});
 				}
 			}
 		}
 	});
 	last = Array.from (r);
 	browser.runtime.sendMessage
-		({nm: "setClickedElements", ce: last.length});
+		({nm: "setClickedElements", ce: last.length, ft: last[0]});
 	st = false;
 };
 

@@ -82,5 +82,13 @@
   "historyPermHint": {
     "message": "behind! requires the history permission to remove the pages it generates from your history. Without this permission, the browser history will be polluted with auto-generated links. If you prefer this behavior to exposing your history to the add-on, you can revoke the history permission.",
     "description": "History permission explanation"
+  },
+  "bypassCheckbox": {
+    "message": "Directly open one-image results",
+    "description": "Directly open one-image results option text"
+  },
+  "bypassCheckboxHint": {
+    "message": "If checked, the inline images screen will be bypassed for results with a single image",
+    "description": "Directly open one-image results option help text"
   }
 }

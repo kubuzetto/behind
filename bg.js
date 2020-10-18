@@ -1,5 +1,15 @@
 "use strict";
 
+var oneResult = undefined;
+var bypassOne = false;
+let checkStorage = function() {
+	browser.storage.local.get('bypassOne').then(function(r) {
+		bypassOne = r.bypassOne === "t";
+	});
+};
+checkStorage();
+browser.storage.onChanged.addListener((x,y) => checkStorage());
+
 // trial-and-error to keep Waterfox happy
 var updCtx = function(upd) {
 	try {
@@ -16,7 +26,13 @@ browser.contextMenus.create ({ "id": "behind_ctxmenu",
 	"onclick": function (x, t) {
 		updCtx({"visible": false});
 		let fn = function(opt) {
-			browser.tabs.create({ url: "/inline.html", active: opt && opt.bgCbox !== "f", openerTabId: t.id});
+			let u;
+			if (bypassOne && oneResult && oneResult.t !== "VIDEO") {
+				u = "/img.html#!" + oneResult.e;
+			} else {
+				u = "/inline.html";
+			}
+			browser.tabs.create({ url: u, active: opt && opt.bgCbox !== "f", openerTabId: t.id});
 		};
 		browser.storage.local.get('bgCbox').then(fn, () => fn({bgCbox: "t"}));
 	}});
@@ -30,15 +46,17 @@ try {
 
 browser.runtime.onMessage.addListener (function (fn, x) {
 	if (fn && fn.nm == "setClickedElements") {
+		oneResult = undefined;
 		var upd = {"visible": true, "enabled": true};
 		if (!!fn.frame) {
 			upd.title = browser.i18n.getMessage ("menuButtonTextFrameDisabled");
 			upd.enabled = false;
 		} else if (!!fn.st)
 			upd.title = browser.i18n.getMessage ("menuButtonTextDefault");
-		else if (!!fn.ce)
+		else if (!!fn.ce) {
+			if (fn.ce === 1) oneResult = fn.ft;
 			upd.title = browser.i18n.getMessage ("menuButtonTextWithNum", [fn.ce]);
-		else
+		} else
 			upd.visible = false;
 		updCtx(upd);
 		// no refresh function in chrome

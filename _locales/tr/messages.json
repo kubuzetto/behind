@@ -82,5 +82,13 @@
   "historyPermHint": {
     "message": "behind! oluşturduğu sayfaları geçmişten silmek için 'history' (geçmiş) bilgilerine erişme yetkisine gerek duyar. Bu yetki olmadan, bu tek seferlik oluşturulan bağlantılar tarayıcı geçmişinizi kirletecektir. Eğer eklentinin tarayıcı geçmişinize erişmesini istemiyorsanız, buradan geçmişe erişme yetkisini kaldırabilirsiniz. Bu durumda oluşturulan bağlantılar geçmişten silinemeyecektir.",
     "description": "Geçmişe erişme yetkisi açıklaması"
+  },
+  "bypassCheckbox": {
+    "message": "Tekli sonuçları doğrudan aç",
+    "description": "Tekli sonuçları doğrudan aç seçeneği metni"
+  },
+  "bypassCheckboxHint": {
+    "message": "Bu seçenek seçili olduğunda, tek resim içeren sonuçlar için doğrudan resim açılır",
+    "description": "Tekli sonuçları doğrudan aç seçeneği yardım metni"
   }
 }

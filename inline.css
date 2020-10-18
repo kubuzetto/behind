@@ -74,7 +74,7 @@ body {
 	margin-bottom: 30px;
 }
 
-#main>.imCt img {
+#main>.imCt img, #main>.imCt video {
 	display: block;
 	margin: auto;
 	background: transparent;
@@ -84,3 +84,4 @@ body {
 	max-height: 400px;
 	object-fit: scale-down;
 }
+

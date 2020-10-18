@@ -2,29 +2,38 @@
 
 document.title = browser.i18n.getMessage("resultsPageTitle");
 
-var makeLiElem = function (ul, ht) {
-	if (ht && ht.length) {
-		let ct = document.createElement ("div");
-		ct.className = "imCt";
-		ul.appendChild (ct);
-		let a = document.createElement ("a");
-		a.target = "_blank";
-		a.setAttribute("download", "");
-		a.href = ht;
-		let im = document.createElement ("img");
-		im.onload = function () {
-			if (im.naturalWidth && im.naturalHeight) {
-				let szTxt = browser.i18n.getMessage
-					("imgSizeText", [im.naturalWidth, im.naturalHeight]);
-				im.setAttribute ("title", szTxt);
-				let spn = document.createElement("span");
-				spn.innerText = szTxt;
-				ct.appendChild(spn);
+var makeLiElem = function (ul, el) {
+	if (el) {
+		let ht = el.e;
+		if (ht && ht.length) {
+			let ct = document.createElement ("div");
+			ct.className = "imCt";
+			ul.appendChild (ct);
+			if (el.t === "VIDEO") {
+				let vid = document.createElement ("video");
+				vid.src = ht;
+				vid.controls = "true";
+				ct.appendChild (vid);
+			} else {
+				let a = document.createElement ("a");
+				a.target = "_blank";
+				a.href = "img.html#!" + ht;
+				let im = document.createElement ("img");
+				im.onload = function () {
+					if (im.naturalWidth && im.naturalHeight) {
+						let szTxt = browser.i18n.getMessage
+							("imgSizeText", [im.naturalWidth, im.naturalHeight]);
+						im.setAttribute ("title", szTxt);
+						let spn = document.createElement("span");
+						spn.innerText = szTxt;
+						ct.appendChild(spn);
+					}
+				}
+				a.appendChild (im);
+				im.src = ht;
+				ct.appendChild (a);
 			}
 		}
-		a.appendChild (im);
-		ct.appendChild (a);
-		im.src = ht;
 	}
 };
 
