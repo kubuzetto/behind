@@ -4,7 +4,12 @@
 <head><meta charset="utf-8"/>
 <script type="text/javascript" src="browser-polyfill.js"></script>
 <link rel="icon" href="icon.svg" sizes="any" type="image/svg+xml"></link>
+<style type="text/css">
+	#history_perm:not(:checked)+span {color: red; font-weight: 900}
+</style>
 </head><body>
+<label><input type="checkbox" id="history_perm" disabled/><span> HISTORY_PERMISSION</span></label>
+<div><i><small id="history_perm_hint">HISTORY_PERMISSION_HINT</small></i></div><hr/>
 <label><input type="checkbox" id="bg_cbox" disabled/><span> PASSIVE_WINDOW</span></label>
 <div><i><small id="bg_cbox_hint">PASSIVE_WINDOW_HINT</small></i></div><hr/><div>
 <input type="radio" id="theme_lite" name="theme" value="lite" disabled/>
@@ -14,8 +19,6 @@
 <input type="radio" id="theme_dark" name="theme" value="dark" disabled/>
 <label for="theme_dark" id="theme_dark_label">DARK_THEME</label>
 </div><div><i><small id="theme_hint">THEME_HINT</small></i></div><hr/>
-<label><input type="checkbox" id="history_perm" disabled/><span> HISTORY_PERMISSION</span></label>
-<div><i><small id="history_perm_hint">HISTORY_PERMISSION_HINT</small></i></div><hr/>
 <label><input type="checkbox" id="bypass_cbox" disabled/><span> BYPASS_ONE</span></label>
 <div><i><small id="bypass_cbox_hint">BYPASS_ONE_HINT</small></i></div><hr/><div>
 <script type="text/javascript" src="options.js"></script></body></html>

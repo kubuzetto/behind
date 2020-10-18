@@ -1,5 +1,11 @@
 "use strict";
 
+browser.runtime.onInstalled.addListener(function (d) {
+	if (d.reason === "install") {
+		browser.runtime.openOptionsPage();
+	}
+});
+
 var oneResult = undefined;
 var bypassOne = false;
 let checkStorage = function() {
