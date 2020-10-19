@@ -81,12 +81,14 @@ var onCtxMenu = function (e) {
 				if (!t.startsWith ("blob:")) {
 					// convert to absolute unless explicitly prevented
 					if (!i) t = new URL (t, document.baseURI).href;
-					r.add ({e: t, t: tag});
+					if (!r.has(t)) {
+						r.add(t);
+						last.push ({e: t, t: tag});
+					}
 				}
 			}
 		}
 	});
-	last = Array.from (r);
 	browser.runtime.sendMessage
 		({nm: "setClickedElements", ce: last.length, ft: last[0]});
 	st = false;
