@@ -1,13 +1,35 @@
 "use strict";
 
+var maxArea = 1;
+var maxWidth = 1;
+var maxHeight = 1;
+
 document.title = browser.i18n.getMessage("resultsPageTitle");
+
+var replaceClass = function(ct, onto, tag) {
+	ct.classList.add(onto);
+	for (let elem of document.querySelectorAll('.' + tag))
+		elem.classList.remove(tag);
+	for (let elem of document.querySelectorAll('.' + onto))
+		elem.classList.add(tag);
+};
+
+var makeDiv = function(cn) {
+	var d = document.createElement ("div");
+	d.className = cn;
+	return d;
+};
+
+var innerDiv = function(c) {
+	c.appendChild(document.createElement("div"))
+	return c;
+}
 
 var makeLiElem = function (ul, el) {
 	if (el) {
 		let ht = el.e;
 		if (ht && ht.length) {
-			let ct = document.createElement ("div");
-			ct.className = "imCt";
+			let ct = makeDiv("imCt");
 			ul.appendChild (ct);
 			if (el.t === "VIDEO") {
 				let vid = document.createElement ("video");
@@ -18,15 +40,34 @@ var makeLiElem = function (ul, el) {
 				let a = document.createElement ("a");
 				a.target = "_blank";
 				a.href = "img.html#!" + ht;
+				let markers = makeDiv("markers");
+				markers.appendChild(innerDiv(makeDiv("wd")));
+				markers.appendChild(innerDiv(makeDiv("hg")));
+				markers.appendChild(innerDiv(makeDiv("ar")));
+				ct.appendChild(markers);
 				let im = document.createElement ("img");
 				im.onload = function () {
-					if (im.naturalWidth && im.naturalHeight) {
-						let szTxt = browser.i18n.getMessage
-							("imgSizeText", [im.naturalWidth, im.naturalHeight]);
+					let wid = im.naturalWidth;
+					let hgh = im.naturalHeight;
+					if (wid && hgh) {
+						let szTxt = browser.i18n.getMessage("imgSizeText", [wid, hgh]);
 						im.setAttribute ("title", szTxt);
 						let spn = document.createElement("span");
 						spn.innerText = szTxt;
 						ct.appendChild(spn);
+						let area = wid * hgh;
+						if (wid >= maxWidth) {
+							maxWidth = wid;
+							replaceClass(ct, "width_" + wid, "widest");
+						}
+						if (area >= maxArea) {
+							maxArea = area;
+							replaceClass(ct, "size_" + area, "largest");
+						}
+						if (hgh >= maxHeight) {
+							maxHeight = hgh;
+							replaceClass(ct, "height_" + hgh, "tallest");
+						}
 					}
 				}
 				a.appendChild (im);

@@ -7,6 +7,9 @@
 	--D3: #adf;
 	--L4: #223;
 	--D4: #fff;
+	--ar: url("data:image/svg+xml,%3Csvg version='1.1' viewBox='-2 -2 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m2.9 2.9v5.7l2.1-2.1 3.5 3.5-3.5 3.5-2.1-2.1v5.7h5.7l-2.1-2.1 3.5-3.5 3.5 3.5-2.1 2.1h5.7v-5.7l-2.1 2.1-3.5-3.5 3.5-3.5 2.1 2.1v-5.7h-5.7l2.1 2.1-3.5 3.5-3.5-3.5 2.1-2.1z'/%3E%3C/svg%3E%0A");
+	--hg: url("data:image/svg+xml,%3Csvg version='1.1' viewBox='-2 -2 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m10 0-4 4h3v12h-3l4 4 4-4h-3v-12h3l-4-4z'/%3E%3C/svg%3E%0A");
+	--wd: url("data:image/svg+xml,%3Csvg version='1.1' viewBox='-2 -2 24 24' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='m4 6-4 4 4 4v-3h12v3l4-4-4-4v3h-12v-3z'/%3E%3C/svg%3E%0A");
 }
 
 body { --icon: var(--L1); --bg-color: var(--L2);
@@ -19,13 +22,8 @@ body#lite {--icon: var(--L1); --bg-color: var(--L2);
 body#dark {--icon: var(--D1); --bg-color: var(--D2);
 --icon-bottom-color: var(--D3); --text-color: var(--D4)}
 
-* { margin: 0; padding: 0 }
-
-body {
-	background: var(--bg-color);
-	text-align: center;
-	margin: 50px;
-}
+* {margin: 0; padding: 0}
+body {background: var(--bg-color); text-align: center; margin: 50px}
 
 #theme {position: fixed; top: 0; right: 10px; text-align: right; display: block}
 #theme>input{display:none}
@@ -35,31 +33,25 @@ body {
 #theme>input+label:first-of-type{border-bottom-left-radius: 4px}
 #theme>input+label:last-of-type{border-bottom-right-radius: 4px}
 #theme>input+label:not(:first-of-type){border-left:none}
-#theme>input:checked+label{background: var(--icon-bottom-color); color: var(--bg-color); }
+#theme>input:checked+label{background: var(--icon-bottom-color); color: var(--bg-color)}
 
-#main>.imCt {
-	margin: 10px;
-	text-align: center;
-	display: inline-block;
-	background: transparent;
-	border-radius: 10px;
-	vertical-align: top;
-	padding: 10px;
-	border: 2px dashed #94EAFF;
-}
+#main>.imCt {margin: 10px; padding: 10px; text-align: center; display: inline-block;
+	background: transparent; border-radius: 10px; vertical-align: top; border: 2px dashed #94EAFF}
+#main>.imCt:nth-child(even) {border-color: #ffa1c3}
 
-#main>.imCt:nth-child(even) {
-	border-color: #ffa1c3;
-}
+#main>.imCt>span {display: block; text-align: center; font-size: 8pt;
+	font-family: monospace; margin-top: 10px; color: var(--text-color)}
 
-#main>.imCt>span {
-	display: block;
-	text-align: center;
-	font-size: 8pt;
-	font-family: monospace;
-	margin-top: 10px;
-	color: var(--text-color);
-}
+.markers {display: block; position: relative; text-align: right;
+	margin-bottom: -20px; height: 20px; top: -21px}
+.markers .wd>div {mask: var(--wd)}
+.markers .ar>div {mask: var(--ar)}
+.markers .hg>div {mask: var(--hg)}
+.markers div {width: 20px; height: 20px; display: inline-block}
+.widest .markers .wd, .largest .markers .ar, .tallest .markers .hg
+	{background-color: var(--bg-color)}
+.widest .markers .wd>div, .largest .markers .ar>div, .tallest .markers .hg>div
+	{background-color: var(--text-color)}
 
 #icon {
 	display: inline-block;
