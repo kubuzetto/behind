@@ -71,8 +71,12 @@ var makeLiElem = function (ul, el) {
 					}
 				}
 				a.appendChild (im);
-				im.src = ht;
 				ct.appendChild (a);
+				fetch(new Request(ht)).then(function(r) {
+					r.blob().then(function(b) {
+						im.src = URL.createObjectURL(b);
+					});
+				});
 			}
 		}
 	}
