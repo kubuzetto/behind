@@ -14,12 +14,15 @@ window.addEventListener("load", function() {
 
 		let e = document.createElement("img");
 		e.className = "transparent";
-		document.body.appendChild(e);
-		fetch(new Request(imgURL)).then(function(r) {
-			r.blob().then(function(b) {
-				e.src = URL.createObjectURL(b);
+ 		e.src = imgURL;
+ 		e.onerror = function() {
+			fetch(new Request(imgURL)).then(function(r) {
+				r.blob().then(function(b) {
+					e.src = URL.createObjectURL(b);
+				});
 			});
-		});
+ 		};		
+		document.body.appendChild(e);
 	}
 
 	// remove url of this generated page from history

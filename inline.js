@@ -70,13 +70,16 @@ var makeLiElem = function (ul, el) {
 						}
 					}
 				}
+				im.src = ht;
+				im.onerror = function() {
+					fetch(new Request(ht)).then(function(r) {
+						r.blob().then(function(b) {
+							im.src = URL.createObjectURL(b);
+						});
+					});
+				};
 				a.appendChild (im);
 				ct.appendChild (a);
-				fetch(new Request(ht)).then(function(r) {
-					r.blob().then(function(b) {
-						im.src = URL.createObjectURL(b);
-					});
-				});
 			}
 		}
 	}
