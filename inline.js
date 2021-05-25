@@ -3,8 +3,13 @@
 var maxArea = 1;
 var maxWidth = 1;
 var maxHeight = 1;
+var sizedResCnt = 0;
 
 document.title = browser.i18n.getMessage("resultsPageTitle");
+
+var widestAlt = browser.i18n.getMessage("resultsPageWidestAltText");
+var largestAlt = browser.i18n.getMessage("resultsPageLargestAltText");
+var tallestAlt = browser.i18n.getMessage("resultsPageTallestAltText");
 
 var replaceClass = function(ct, onto, tag) {
 	ct.classList.add(onto);
@@ -15,15 +20,20 @@ var replaceClass = function(ct, onto, tag) {
 };
 
 var makeDiv = function(cn) {
-	var d = document.createElement ("div");
+	var d = document.createElement("div");
 	d.className = cn;
 	return d;
 };
 
 var innerDiv = function(c) {
-	c.appendChild(document.createElement("div"))
+	c.appendChild(document.createElement("div"));
 	return c;
-}
+};
+
+var alt = function(e, t) {
+	e.setAttribute("title", t);
+	return e;
+};
 
 var makeLiElem = function (ul, el) {
 	if (el) {
@@ -41,18 +51,18 @@ var makeLiElem = function (ul, el) {
 				a.target = "_blank";
 				a.href = "img.html#!" + ht;
 				let markers = makeDiv("markers");
-				markers.appendChild(innerDiv(makeDiv("wd")));
-				markers.appendChild(innerDiv(makeDiv("hg")));
-				markers.appendChild(innerDiv(makeDiv("ar")));
+				markers.appendChild(innerDiv(alt(makeDiv("wd"), widestAlt)));
+				markers.appendChild(innerDiv(alt(makeDiv("hg"), tallestAlt)));
+				markers.appendChild(innerDiv(alt(makeDiv("ar"), largestAlt)));
 				ct.appendChild(markers);
 				let im = document.createElement ("img");
 				im.onload = function () {
 					let wid = im.naturalWidth;
 					let hgh = im.naturalHeight;
 					if (wid && hgh) {
+						if (++sizedResCnt == 2) ul.classList.add("multiResult");
 						let szTxt = browser.i18n.getMessage("imgSizeText", [wid, hgh]);
-						im.setAttribute ("title", szTxt);
-						let spn = document.createElement("span");
+						let spn = alt(document.createElement("span"), szTxt);
 						spn.innerText = szTxt;
 						ct.appendChild(spn);
 						let area = wid * hgh;
@@ -70,7 +80,6 @@ var makeLiElem = function (ul, el) {
 						}
 					}
 				}
-				im.src = ht;
 				im.onerror = function() {
 					fetch(new Request(ht)).then(function(r) {
 						r.blob().then(function(b) {
@@ -80,6 +89,11 @@ var makeLiElem = function (ul, el) {
 				};
 				a.appendChild (im);
 				ct.appendChild (a);
+				let fn = ht.split('#').shift().split('?').shift().split('/').pop();
+				let spn = alt(document.createElement("span"), fn);
+				spn.innerText = fn;
+				ct.appendChild(spn);
+				im.src = ht;
 			}
 		}
 	}

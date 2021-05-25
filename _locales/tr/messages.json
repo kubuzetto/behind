@@ -90,5 +90,17 @@
   "bypassCheckboxHint": {
     "message": "Bu seçenek seçili olduğunda, tek resim içeren sonuçlar için doğrudan resim açılır",
     "description": "Tekli sonuçları doğrudan aç seçeneği yardım metni"
+  },
+  "resultsPageWidestAltText": {
+    "message": "En Geniş Görsel",
+    "description": "En geniş görsel için bilgi metni"
+  },
+  "resultsPageTallestAltText": {
+    "message": "En Uzun Görsel",
+    "description": "En uzun (yüksek) görsel için bilgi metni"
+  },
+  "resultsPageLargestAltText": {
+    "message": "En Büyük Görsel",
+    "description": "En büyük görsel için bilgi metni"
   }
 }

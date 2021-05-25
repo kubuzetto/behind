@@ -90,5 +90,17 @@
   "bypassCheckboxHint": {
     "message": "If checked, the inline images screen will be bypassed for results with a single image",
     "description": "Directly open one-image results option help text"
+  },
+  "resultsPageWidestAltText": {
+    "message": "Widest Image",
+    "description": "Widest image hint text"
+  },
+  "resultsPageTallestAltText": {
+    "message": "Tallest Image",
+    "description": "Tallest image hint text"
+  },
+  "resultsPageLargestAltText": {
+    "message": "Largest Image",
+    "description": "Largest image hint text"
   }
 }

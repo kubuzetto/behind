@@ -35,12 +35,15 @@ body {background: var(--bg-color); text-align: center; margin: 50px}
 #theme>input+label:not(:first-of-type){border-left:none}
 #theme>input:checked+label{background: var(--icon-bottom-color); color: var(--bg-color)}
 
-#main>.imCt {margin: 10px; padding: 10px; text-align: center; display: inline-block;
-	background: transparent; border-radius: 10px; vertical-align: top; border: 2px dashed #94EAFF}
+#main>.imCt {margin: 10px; padding: 10px; text-align: center;
+	display: inline-block; background: transparent; border-radius: 10px;
+	vertical-align: top; border: 2px dashed #94EAFF}
 #main>.imCt:nth-child(even) {border-color: #ffa1c3}
 
 #main>.imCt>span {display: block; text-align: center; font-size: 8pt;
-	font-family: monospace; margin-top: 10px; color: var(--text-color)}
+	font-family: monospace; margin: auto; margin-top: 10px;
+	color: var(--text-color); white-space: nowrap; overflow: hidden;
+	text-overflow: ellipsis; max-width: 300px}
 
 .markers {display: block; position: relative; text-align: right;
 	margin-bottom: -20px; height: 20px; top: -21px}
@@ -48,10 +51,10 @@ body {background: var(--bg-color); text-align: center; margin: 50px}
 .markers .ar>div {mask: var(--ar)}
 .markers .hg>div {mask: var(--hg)}
 .markers div {width: 20px; height: 20px; display: inline-block}
-.widest .markers .wd, .largest .markers .ar, .tallest .markers .hg
-	{background-color: var(--bg-color)}
-.widest .markers .wd>div, .largest .markers .ar>div, .tallest .markers .hg>div
-	{background-color: var(--text-color)}
+.multiResult .widest .markers .wd, .multiResult .largest .markers .ar,
+.multiResult .tallest .markers .hg {background-color: var(--bg-color)}
+.multiResult .widest .markers .wd>div, .multiResult .largest .markers .ar>div,
+.multiResult .tallest .markers .hg>div {background-color: var(--text-color)}
 
 #icon {
 	display: inline-block;
@@ -76,4 +79,3 @@ body {background: var(--bg-color); text-align: center; margin: 50px}
 	max-height: 400px;
 	object-fit: scale-down;
 }
-
