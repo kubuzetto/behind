@@ -102,5 +102,33 @@
   "resultsPageLargestAltText": {
     "message": "En Büyük Görsel",
     "description": "En büyük görsel için bilgi metni"
+  },
+  "order_none": {
+    "message": "Sıralama yok",
+    "description": "No ordering option text"
+  },
+  "order_widest_first": {
+    "message": "Genişten dara",
+    "description": "Widest first ordering option text"
+  },
+  "order_widest_last": {
+    "message": "Dardan genişe",
+    "description": "Widest last ordering option text"
+  },
+  "order_tallest_first": {
+    "message": "Uzundan kısaya",
+    "description": "Tallest first ordering option text"
+  },
+  "order_tallest_last": {
+    "message": "Kısadan uzuna",
+    "description": "Tallest last ordering option text"
+  },
+  "order_largest_first": {
+    "message": "Büyükten küçüğe",
+    "description": "Largest first ordering option text"
+  },
+  "order_largest_last": {
+    "message": "Küçükten büyüğe",
+    "description": "Largest last ordering option text"
   }
 }

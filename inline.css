@@ -79,3 +79,17 @@ body {background: var(--bg-color); text-align: center; margin: 50px}
 	max-height: 400px;
 	object-fit: scale-down;
 }
+
+.orderSelector {
+	width: 100%; display: block; text-align: right;
+	margin-top: -30px; margin-bottom: 30px;
+}
+.orderSelector select {
+	display: inline-block;
+  background-color: var(--bg-color);
+	border: none;
+	padding: 2px;
+	border-bottom: 2px dotted black;
+	color: var(--icon-bottom-color);
+	border-color: var(--icon-bottom-color);
+}

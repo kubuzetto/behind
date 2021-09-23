@@ -5,6 +5,44 @@ var maxWidth = 1;
 var maxHeight = 1;
 var sizedResCnt = 0;
 
+var compFn = "none";
+var ordFns = (function() {
+	let d = function(e) {
+		let l = e.getElementsByTagName("img");
+		if (l.length == 0) return {w: 0, h: 0};
+		return {w: l[0].naturalWidth, h: l[0].naturalHeight};
+	};
+	return {
+		"none":          function (a, b) { return  a.idx -  b.idx },
+		"widest_first":  function (b, a) { return d(a).w - d(b).w },
+		"widest_last":   function (a, b) { return d(a).w - d(b).w },
+		"tallest_first": function (b, a) { return d(a).h - d(b).h },
+		"tallest_last":  function (a, b) { return d(a).h - d(b).h },
+		"largest_first": function (b, a) { return d(a).w * d(a).h - b.w * b.h },
+		"largest_last":  function (a, b) { return d(a).w * d(a).h - b.w * b.h },
+	};
+})();
+var orderImagesBy = function(l, f) {
+	if (!l || !l.children || l.children.length < 2) return;
+	[...l.children].sort(ordFns[f]).forEach(i => l.appendChild(i));
+};
+var orderer = function(l) {
+	let d = document.createElement("div");
+	d.className = "orderSelector";
+	let s = document.createElement("select");
+	s.addEventListener("change", function(e) {
+		orderImagesBy(l, s.value);
+	})
+	for (let key in ordFns) {
+		let o = document.createElement("option");
+		o.value = key;
+		o.text = browser.i18n.getMessage("order_" + key);
+		s.appendChild(o);
+	}
+	d.appendChild(s);
+	return d;
+};
+
 document.title = browser.i18n.getMessage("resultsPageTitle");
 
 var widestAlt = browser.i18n.getMessage("resultsPageWidestAltText");
@@ -35,11 +73,12 @@ var alt = function(e, t) {
 	return e;
 };
 
-var makeLiElem = function (ul, el) {
+var makeLiElem = function (ul, el, idx) {
 	if (el) {
 		let ht = el.e;
 		if (ht && ht.length) {
 			let ct = makeDiv("imCt");
+			ct.idx = idx;
 			ul.appendChild (ct);
 			if (el.t === "VIDEO") {
 				let vid = document.createElement ("video");
@@ -79,6 +118,7 @@ var makeLiElem = function (ul, el) {
 							replaceClass(ct, "height_" + hgh, "tallest");
 						}
 					}
+					orderImagesBy(ul.childNodes, compFn);
 				}
 				im.onerror = function() {
 					fetch(new Request(ht)).then(function(r) {
@@ -136,7 +176,10 @@ window.onload = function () {
 			{nm: "fetchClickedElements"}).then (function (v) {
 				var main = document.querySelector ("#main");
 				if (v && v.el && v.el.length) {
-					v.el.forEach (function (x) {makeLiElem (main, x);});
+					if (v.el.length > 1) {
+						main.parentNode.insertBefore(orderer(main), main);
+					}
+					v.el.forEach (function (x, i) {makeLiElem (main, x, i)});
 				} else {
 					main.innerText = browser.i18n.getMessage ("errorNoImages");
 				}

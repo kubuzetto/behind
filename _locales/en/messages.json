@@ -102,5 +102,33 @@
   "resultsPageLargestAltText": {
     "message": "Largest Image",
     "description": "Largest image hint text"
+  },
+  "order_none": {
+    "message": "No ordering",
+    "description": "No ordering option text"
+  },
+  "order_widest_first": {
+    "message": "Widest first",
+    "description": "Widest first ordering option text"
+  },
+  "order_widest_last": {
+    "message": "Widest last",
+    "description": "Widest last ordering option text"
+  },
+  "order_tallest_first": {
+    "message": "Tallest first",
+    "description": "Tallest first ordering option text"
+  },
+  "order_tallest_last": {
+    "message": "Tallest last",
+    "description": "Tallest last ordering option text"
+  },
+  "order_largest_first": {
+    "message": "Largest first",
+    "description": "Largest first ordering option text"
+  },
+  "order_largest_last": {
+    "message": "Largest last",
+    "description": "Largest last ordering option text"
   }
 }
