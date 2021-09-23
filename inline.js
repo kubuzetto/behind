@@ -18,8 +18,14 @@ var ordFns = (function() {
 		"widest_last":   function (a, b) { return d(a).w - d(b).w },
 		"tallest_first": function (b, a) { return d(a).h - d(b).h },
 		"tallest_last":  function (a, b) { return d(a).h - d(b).h },
-		"largest_first": function (b, a) { return d(a).w * d(a).h - b.w * b.h },
-		"largest_last":  function (a, b) { return d(a).w * d(a).h - b.w * b.h },
+		"largest_first": function (b, a) {
+			let da = d(a), db = d(b);
+			return da.w * da.h - db.w * db.h;
+		},
+		"largest_last":  function (a, b) {
+			let da = d(a), db = d(b);
+			return da.w * da.h - db.w * db.h;
+		},
 	};
 })();
 var orderImagesBy = function(l, f) {
