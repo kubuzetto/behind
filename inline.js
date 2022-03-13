@@ -127,6 +127,7 @@ var makeLiElem = function (ul, el, idx) {
 					orderImagesBy(ul.childNodes, compFn);
 				}
 				im.onerror = function() {
+					im.onerror = function() {}
 					fetch(new Request(ht)).then(function(r) {
 						r.blob().then(function(b) {
 							im.src = URL.createObjectURL(b);
