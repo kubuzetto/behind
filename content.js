@@ -38,8 +38,8 @@ var elemsFromPoint = function (x, y, add) {
 				add (n.currentSrc, false, nn);
 				add (n.poster, false, "IMG");
 				if (n.srcset) n.srcset.replace
-					(/\s+[0-9]+(\.[0-9]+)?[wx]/g, "")
-					.split (/,/).forEach (function (x) {add (x, false, nn);});
+					(/\s+[0-9]+(\.[0-9]+)?[wx],\n?/g, "\n")
+					.split (/\n/).forEach (function (x) {add (x, false, nn);});
 			}
 			var nrm = getComputedStyle (n);
 			var bef = getComputedStyle (n, "::before");
