@@ -56,16 +56,16 @@
     "description": "Açılan pencereyi öne getir seçeneği yardım metni"
   },
   "lightTheme": {
-	"message": "Açık",
-	"description": "Açık tema metni"
+    "message": "Açık",
+    "description": "Açık tema metni"
   },
   "darkTheme": {
-	"message": "Koyu",
-	"description": "Koyu tema metni"
+    "message": "Koyu",
+    "description": "Koyu tema metni"
   },
   "autoTheme": {
-	"message": "Otomatik",
-	"description": "Otomatik tema metni"
+    "message": "Otomatik",
+    "description": "Otomatik tema metni"
   },
   "themeHint": {
     "message": "Tema seçimi. 'Otomatik' seçeneği sistem temasına uymaya çalışır.",
@@ -83,13 +83,29 @@
     "message": "behind! oluşturduğu sayfaları geçmişten silmek için 'history' (geçmiş) bilgilerine erişme yetkisine gerek duyar. Bu yetki olmadan, bu tek seferlik oluşturulan bağlantılar tarayıcı geçmişinizi kirletecektir. Eğer eklentinin tarayıcı geçmişinize erişmesini istemiyorsanız, buradan geçmişe erişme yetkisini kaldırabilirsiniz. Bu durumda oluşturulan bağlantılar geçmişten silinemeyecektir.",
     "description": "Geçmişe erişme yetkisi açıklaması"
   },
-  "bypassCheckbox": {
-    "message": "Tekli sonuçları doğrudan aç",
-    "description": "Tekli sonuçları doğrudan aç seçeneği metni"
+  "offBypass": {
+    "message": "Kestirme yok (Sonuç listesini her zaman görüntüle)",
+    "description": ""
   },
-  "bypassCheckboxHint": {
-    "message": "Bu seçenek seçili olduğunda, tek resim içeren sonuçlar için doğrudan resim açılır",
-    "description": "Tekli sonuçları doğrudan aç seçeneği yardım metni"
+  "oneBypass": {
+    "message": "Tek görsel varsa doğrudan aç",
+    "description": ""
+  },
+  "bigBypass": {
+    "message": "En büyük görseli doğrudan aç",
+    "description": ""
+  },
+  "wideBypass": {
+    "message": "En geniş görseli doğrudan aç",
+    "description": ""
+  },
+  "tallBypass": {
+    "message": "En uzun görseli doğrudan aç",
+    "description": ""
+  },
+  "bypassHint": {
+    "message": "Burada bir kriter seçilirse, sonuç listesi görüntülenmeden; sonuçlar arasında ilgili kritere uyan görsel doğrudan açılır.",
+    "description": ""
   },
   "resultsPageWidestAltText": {
     "message": "En Geniş Görsel",

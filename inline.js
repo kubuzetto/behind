@@ -79,6 +79,24 @@ var alt = function(e, t) {
 	return e;
 };
 
+var numWaitingImages = 0;
+var wgDone = function() {
+	if (--numWaitingImages > 0) return;
+	browser.storage.local.get('bypass').then(function(r) {
+		let elems = undefined;
+		if (r.bypass === 'big') {
+			elems = document.querySelectorAll('.largest img');
+		} else if (r.bypass === 'wide') {
+			elems = document.querySelectorAll('.widest img');
+		} else if (r.bypass === 'tall') {
+			elems = document.querySelectorAll('.tallest img');
+		} else return;
+		// to bypass; this element must be unique
+		if (elems.length != 1) return;
+		window.location.href = "/img.html#!" + elems[0].src;
+	});
+}
+
 var makeLiElem = function (ul, el, idx) {
 	if (el) {
 		let ht = el.e;
@@ -125,9 +143,10 @@ var makeLiElem = function (ul, el, idx) {
 						}
 					}
 					orderImagesBy(ul.childNodes, compFn);
+					wgDone();
 				}
 				im.onerror = function() {
-					im.onerror = function() {}
+					im.onerror = function() {wgDone()};
 					fetch(new Request(ht)).then(function(r) {
 						r.blob().then(function(b) {
 							im.src = URL.createObjectURL(b);
@@ -153,7 +172,7 @@ let checkTheme = function() {
 	});
 };
 
-window.onload = function () {
+window.addEventListener("load", function() {
 	checkTheme();
 	browser.storage.onChanged.addListener((x,y) => checkTheme());
 	for (let val of ["lite", "auto", "dark"]) {
@@ -183,6 +202,7 @@ window.onload = function () {
 			{nm: "fetchClickedElements"}).then (function (v) {
 				var main = document.querySelector ("#main");
 				if (v && v.el && v.el.length) {
+					numWaitingImages = v.el.length;
 					if (v.el.length > 1) {
 						main.parentNode.insertBefore(orderer(main), main);
 					}
@@ -201,4 +221,4 @@ window.onload = function () {
 	browser.permissions.contains({permissions: ["history"]}).then(allowed => {
 		if (allowed) browser.history.deleteUrl({url: window.location.href});
 	});
-};
+});
