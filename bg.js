@@ -7,10 +7,10 @@ browser.runtime.onInstalled.addListener(function (d) {
 });
 
 var oneResult = undefined;
-var bypassOne = false;
+var bypassMode = "off";
 let checkStorage = function() {
-	browser.storage.local.get('bypassOne').then(function(r) {
-		bypassOne = r.bypassOne === "t";
+	browser.storage.local.get('bypass').then(function(r) {
+		bypassMode = r.bypass || 'off';
 	});
 };
 checkStorage();
@@ -32,8 +32,11 @@ browser.contextMenus.create ({ "id": "behind_ctxmenu",
 	"onclick": function (x, t) {
 		updCtx({"visible": false});
 		let fn = function(opt) {
+			// we only handle the 'off' and 'one' cases here.
+			// 'big', 'wide' and 'tall' must be handled within the inline
+			// page; as we don't currently have the image sizes at hand.
 			let u;
-			if (bypassOne && oneResult && oneResult.t !== "VIDEO") {
+			if (bypassMode !== 'off' && oneResult && oneResult.t !== "VIDEO") {
 				u = "/img.html#!" + oneResult.e;
 			} else {
 				u = "/inline.html";

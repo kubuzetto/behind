@@ -59,17 +59,27 @@ document.addEventListener('DOMContentLoaded', function() {
 		updHistoryPermButtonState();
 	}
 
-	let bp_cbox = document.querySelector("#bypass_cbox");
-	if (bp_cbox) {
-		document.querySelector('#bypass_cbox+span').innerText = browser.i18n.getMessage("bypassCheckbox");
-		document.querySelector('#bypass_cbox_hint').innerText = browser.i18n.getMessage("bypassCheckboxHint");
-		browser.storage.local.get('bypassOne').then(function(r) {
-			bp_cbox.checked = r.bypassOne === "t";
-		}).finally(function() {
-			bp_cbox.addEventListener("click", function(e) {
-				browser.storage.local.set({bypassOne: bp_cbox.checked ? "t" : "f"});
-			});
-			bp_cbox.disabled = false;
+	browser.storage.local.get('bypass').then(function(r) {
+		if (r.bypass) document.querySelector("#bypass_" + r.bypass).checked = true;
+		else browser.storage.local.get('bypassOne').then(function(r) {
+			// migrate legacy setting
+			let val = r.bypassOne === "t" ? "one" : "off";
+			browser.storage.local.set({bypass: val});
+			document.querySelector("#bypass_" + val).checked = true;
 		});
+	});
+	for (let val of ["off", "one", "big", "wide", "tall"]) {
+		let elem = document.querySelector("#bypass_" + val);
+		if (elem) {
+			elem.addEventListener("click", function(e) {
+				browser.storage.local.set({bypass: val});
+			});
+			elem.disabled = false;
+		}
+		document.querySelector('#bypass_'+val+'_label').
+			innerText = browser.i18n.getMessage(val+'Bypass');
 	}
+	document.querySelector('#bypass_hint').innerText = browser.i18n.getMessage("bypassHint");
+
+
 });

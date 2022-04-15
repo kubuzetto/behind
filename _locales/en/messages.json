@@ -56,16 +56,16 @@
     "description": "Bring inline images screen forward option help text"
   },
   "lightTheme": {
-	"message": "Light",
-	"description": "Light theme text"
+    "message": "Light",
+    "description": "Light theme text"
   },
   "darkTheme": {
-	"message": "Dark",
-	"description": "Dark theme text"
+    "message": "Dark",
+    "description": "Dark theme text"
   },
   "autoTheme": {
-	"message": "Automatic",
-	"description": "Auto theme text"
+    "message": "Automatic",
+    "description": "Auto theme text"
   },
   "themeHint": {
     "message": "Theme selection. 'Automatic' option attempts to match the system theme.",
@@ -83,13 +83,29 @@
     "message": "behind! requires the history permission to remove the pages it generates from your history. Without this permission, the browser history will be polluted with auto-generated links. If you prefer this behavior to exposing your history to the add-on, you can revoke the history permission.",
     "description": "History permission explanation"
   },
-  "bypassCheckbox": {
-    "message": "Directly open one-image results",
-    "description": "Directly open one-image results option text"
+  "offBypass": {
+    "message": "No bypass (Results page will always be opened)",
+    "description": ""
   },
-  "bypassCheckboxHint": {
-    "message": "If checked, the inline images screen will be bypassed for results with a single image",
-    "description": "Directly open one-image results option help text"
+  "oneBypass": {
+    "message": "Directly open one-image results",
+    "description": ""
+  },
+  "bigBypass": {
+    "message": "Directly open the largest image",
+    "description": ""
+  },
+  "wideBypass": {
+    "message": "Directly open the widest image",
+    "description": ""
+  },
+  "tallBypass": {
+    "message": "Directly open the tallest image",
+    "description": ""
+  },
+  "bypassHint": {
+    "message": "If one of the bypass settings is enabled; the resulting image list is bypassed and image matching the criteria will be opened directly.",
+    "description": ""
   },
   "resultsPageWidestAltText": {
     "message": "Widest Image",
