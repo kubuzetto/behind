@@ -1,6 +1,6 @@
 {
   "name": "behind-extension",
-  "version": "0.2.20",
+  "version": "0.2.21",
   "description": "Browser extension for viewing images behind other elements",
   "scripts": {
     "build": "npm run build:firefox && npm run build:chrome",
