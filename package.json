@@ -1,0 +1,23 @@
+{
+  "name": "behind-extension",
+  "version": "0.2.20",
+  "description": "Browser extension for viewing images behind other elements",
+  "scripts": {
+    "build": "npm run build:firefox && npm run build:chrome",
+    "build:firefox": "node build.js firefox",
+    "build:chrome": "node build.js chrome",
+    "clean": "rm -rf dist/",
+    "prebuild": "npm run clean"
+  },
+  "devDependencies": {
+    "fs-extra": "^11.1.1"
+  },
+  "keywords": [
+    "browser-extension",
+    "firefox",
+    "chrome",
+    "images"
+  ],
+  "author": "",
+  "license": "MIT"
+} 
