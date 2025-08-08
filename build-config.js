@@ -57,6 +57,11 @@ module.exports = {
       "32": "icon32.png",
       "64": "icon64.png",
       "256": "icon256.png"
+    },
+    browser_specific_settings: {
+      gecko: {
+        id: "{d6005a62-1fdb-4cf2-b5ef-21b865d894f7}"
+      }
     }
   },
 
