@@ -1,5 +1,8 @@
 "use strict";
 
+// Import browser polyfill for Manifest V3 service worker
+importScripts('browser-polyfill.js');
+
 browser.runtime.onInstalled.addListener(function (d) {
 	if (d.reason === "install") {
 		browser.runtime.openOptionsPage();
@@ -26,10 +29,15 @@ var updCtx = function(upd) {
 	}
 };
 
-browser.contextMenus.create ({ "id": "behind_ctxmenu",
+browser.contextMenus.create ({ 
+	"id": "behind_ctxmenu",
 	"title": browser.i18n.getMessage("menuButtonTextDefault"),
-	"contexts": [ "image", "link", "page", "audio", "video", "frame" ],
-	"onclick": function (x, t) {
+	"contexts": [ "image", "link", "page", "audio", "video", "frame" ]
+});
+
+// Handle context menu clicks
+browser.contextMenus.onClicked.addListener(function(info, tab) {
+	if (info.menuItemId === "behind_ctxmenu") {
 		updCtx({"visible": false});
 		let fn = function(opt) {
 			// we only handle the 'off' and 'one' cases here.
@@ -41,10 +49,12 @@ browser.contextMenus.create ({ "id": "behind_ctxmenu",
 			} else {
 				u = "/inline.html";
 			}
-			browser.tabs.create({ url: u, active: opt && opt.bgCbox !== "f", openerTabId: t.id});
+			browser.tabs.create({ url: u, active: opt && opt.bgCbox !== "f", openerTabId: tab.id});
 		};
 		browser.storage.local.get('bgCbox').then(fn, () => fn({bgCbox: "t"}));
-	}});
+	}
+});
+
 updCtx({"visible": false});
 
 // try to add an icon to the menu item: this is not currently supported in chrome and might fail
